@@ -1,0 +1,13 @@
+[package]
+name = "sqlx-conn-mgr-txn-bug"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+
+[dependencies]
+sqlx-sqlite-toolkit = { git = "https://github.com/silvermine/tauri-plugin-sqlite", rev = "240eb77" }
+sqlx-sqlite-conn-mgr = { git = "https://github.com/silvermine/tauri-plugin-sqlite", rev = "240eb77" }
+sqlx = { version = "0.8.6", features = ["runtime-tokio", "sqlite"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+tempfile = "3"

@@ -1,0 +1,8 @@
+[net]
+git-fetch-with-cli = true
+
+[alias]
+lint-clippy = "clippy --workspace --all-targets --all-features -- -D warnings"
+fix-clippy = "clippy --workspace --fix"
+lint-fmt = "fmt -- --check"
+fix-fmt = "fmt"
