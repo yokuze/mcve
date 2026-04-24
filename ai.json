@@ -1,0 +1,11 @@
+{
+   "extends": "github:yokuze/aix-config",
+   "skills": {
+      "create-mcve": {
+         "path": "./skills/create-mcve"
+      }
+   },
+   "mcp": {},
+   "rules": {},
+   "prompts": {}
+}
