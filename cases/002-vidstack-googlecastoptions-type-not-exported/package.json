@@ -1,0 +1,22 @@
+{
+  "name": "vidstack-googlecastoptions-type-not-exported",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "repro": "bash ./run.sh"
+  },
+  "dependencies": {
+    "vidstack": "1.12.13",
+    "vue": "3.5.30"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "5.2.1",
+    "typescript": "5.9.3",
+    "vite": "6.0.7",
+    "vue-tsc": "3.2.5"
+  }
+}

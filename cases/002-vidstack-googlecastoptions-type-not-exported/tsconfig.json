@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "strict": true,
+    "lib": ["ESNext"],
+    "skipLibCheck": true,
+    "types": ["vidstack/vue"]
+  },
+  "vueCompilerOptions": {
+    "fallthroughAttributes": true
+  }
+}
