@@ -1,0 +1,18 @@
+# Standalone workspace: pins sqlx 0.9 / libsqlite3-sys 0.35, which cannot share a
+# lockfile with case 001 (sqlx 0.8.6 / libsqlite3-sys 0.30) — one Cargo.lock may
+# hold only one version of a `links` crate. Excluded from the repo-root workspace
+# in ../../Cargo.toml.
+[workspace]
+
+[package]
+name = "sqlx-sqlite-toolkit-reobserve-bug"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+
+[dependencies]
+sqlx-sqlite-toolkit = { git = "https://github.com/silvermine/tauri-plugin-sqlite.git", rev = "e1b38366c04d973c3ab4e85cc56fa7ceb26efa81", features = ["observer"] }
+sqlx-sqlite-observer = { git = "https://github.com/silvermine/tauri-plugin-sqlite.git", rev = "e1b38366c04d973c3ab4e85cc56fa7ceb26efa81", features = ["conn-mgr"] }
+sqlx = { version = "0.9.0", features = ["runtime-tokio", "sqlite"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
+tempfile = "3"

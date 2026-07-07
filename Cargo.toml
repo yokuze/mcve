@@ -10,4 +10,5 @@ members = ["cases/*"]
 exclude = [
    "cases/002-vidstack-googlecastoptions-type-not-exported",
    "cases/003-sqlx-sqlite-toolkit-observation-not-shared-across-clones",
+   "cases/004-sqlx-sqlite-toolkit-reobserve-kills-existing-subscribers",
 ]
