@@ -1,3 +1,13 @@
 [workspace]
 resolver = "3"
 members = ["cases/*"]
+# Some cases are not members of this workspace:
+#   - Non-Rust cases (JS/TS, browser repros) are not Cargo packages.
+#   - Rust cases whose pinned deps conflict at the `links`-crate level (e.g. a
+#     different libsqlite3-sys / sqlx version than another member) must own their
+#     own Cargo.lock, since one lockfile cannot hold two versions of a `links`
+#     crate. Those declare their own `[workspace]` and are excluded here.
+exclude = [
+   "cases/002-vidstack-googlecastoptions-type-not-exported",
+   "cases/003-sqlx-sqlite-toolkit-observation-not-shared-across-clones",
+]
