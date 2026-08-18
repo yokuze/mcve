@@ -1,0 +1,24 @@
+# Standalone workspace: this case is a real Tauri desktop app (it needs a window
+# manager to fire the `Destroyed` event the bug hinges on), so it pulls in the
+# whole tauri/wry dependency tree plus sqlx 0.9 / libsqlite3-sys 0.35. It cannot
+# share a lockfile with case 001 (sqlx 0.8.6 / libsqlite3-sys 0.30) - one
+# Cargo.lock may hold only one version of a `links` crate. Excluded from the
+# repo-root workspace in ../../Cargo.toml.
+[workspace]
+
+[package]
+name = "tauri-plugin-sqlite-window-close-observation-bug"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+
+[dependencies]
+tauri = "=2.11.5"
+tauri-plugin-sqlite = { git = "https://github.com/silvermine/tauri-plugin-sqlite.git", rev = "b31142edf6814848995a6df13280f2a8a0a2cd80" }
+sqlx-sqlite-observer = { git = "https://github.com/silvermine/tauri-plugin-sqlite.git", rev = "b31142edf6814848995a6df13280f2a8a0a2cd80", features = ["conn-mgr"] }
+futures = "=0.3.33"
+tempfile = "=3.27.0"
+tokio = { version = "=1.53.1", features = ["rt", "sync", "time"] }
+
+[build-dependencies]
+tauri-build = "=2.6.3"

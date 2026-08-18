@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <title>window-close-observation-bug</title>
+   </head>
+   <body>
+      <h1 id="role">…</h1>
+      <p id="status">starting</p>
+      <script>
+         const invoke = window.__TAURI__.core.invoke,
+               role = new URLSearchParams(location.search).get('role'),
+               status = document.getElementById('status');
+
+         document.getElementById('role').textContent = role;
+
+         // Only the observer window registers as an observer of MAIN. The
+         // bystander window exists purely so destroying the observer window
+         // does not close the last window and end the process.
+         async function run() {
+            if (role !== 'observer') {
+               status.textContent = 'never touches the database';
+               return;
+            }
+
+            await invoke('plugin:sqlite|load', { dbKey: 'MAIN' });
+            await invoke('plugin:sqlite|observe', { dbKey: 'MAIN', tables: [ 'Item' ] });
+            status.textContent = 'observing MAIN';
+            await invoke('observer_window_ready');
+         }
+
+         run().catch(async (err) => {
+            status.textContent = 'failed: ' + err;
+            await invoke('observer_window_failed', { reason: String(err) });
+         });
+      </script>
+   </body>
+</html>

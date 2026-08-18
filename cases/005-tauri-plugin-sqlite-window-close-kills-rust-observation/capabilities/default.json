@@ -1,0 +1,6 @@
+{
+   "identifier": "default",
+   "description": "Only the observer window talks to the sqlite plugin",
+   "windows": ["observer-window"],
+   "permissions": ["sqlite:default"]
+}

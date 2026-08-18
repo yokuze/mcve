@@ -1,0 +1,15 @@
+{
+   "productName": "window-close-observation-bug",
+   "version": "0.1.0",
+   "identifier": "com.example.windowcloseobservationbug",
+   "build": {
+      "frontendDist": "./web"
+   },
+   "app": {
+      "withGlobalTauri": true,
+      "windows": [],
+      "security": {
+         "csp": null
+      }
+   }
+}
